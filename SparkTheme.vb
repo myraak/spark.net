@@ -1,3 +1,4 @@
+
 Imports MintUI
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
@@ -125,7 +126,7 @@ Public Class SparkForm
             Invalidate()
         End Set
     End Property
-    
+
     Private WM_NCLBUTTONDOWN As Integer = 52
     Private Movable As Boolean = False
     Private Pt As Point
@@ -377,7 +378,8 @@ Public Class SparkTextBox
         Size = New Size(120, 25)
         Multiline = False
     End Sub
-    Public Overrides Sub OnPaintFrame(e As TextBoxPaintFrameEventArgs)
+
+    Public Overloads Overrides Sub OnPaint(e As TextBoxPaintEventArgs)
         G = e.Graphics
         G.Clear(Parent.BackColor)
         TextRectangle = New Rectangle(0, 0, Width - 1, Height - 1)
@@ -782,7 +784,7 @@ Public Class SparkTabControl
         SelectedTabColor = Color.FromArgb(3, 138, 131)
         TabPageColor = Color.FromArgb(54, 55, 60)
         ItemSize = New Size(100, 40)
-        Font = New Font("Segoe UI", 12)
+        Font = New Font("Segoe UI", 9)
         DrawMode = TabDrawMode.Normal
         SizeMode = TabSizeMode.Fixed
     End Sub
@@ -949,7 +951,6 @@ Public Class SparkListBox
         End Try
     End Sub
 End Class
-
 Public NotInheritable Class SparkNumericUpDown
     Inherits MintNumericUpDown
     Private G As Graphics
@@ -1041,7 +1042,7 @@ Public NotInheritable Class SparkNumericUpDown
         End If
     End Sub
     Private Path1 As GraphicsPath
-    Public Overrides Sub OnPaintFrame(e As NumericUpDownPaintFrameEventArgs)
+    Public Sub OnPaintFrame(e As NumericUpDownPaintEventArgs)
         G = e.Graphics
         G.Clear(Parent.BackColor)
         Dim Bounds As Rectangle = New Rectangle(0, 0, Width - 1, Height - 1)
@@ -1127,6 +1128,7 @@ Public Class SparkProgressBar
         BorderRadius = 1
         ProgressColor = Color.WhiteSmoke
         TextFont = New Font("Segoe UI", 9)
+        Value = 30
     End Sub
     Private Path1, Path2 As GraphicsPath
     Private BoundsRectangle As Rectangle
